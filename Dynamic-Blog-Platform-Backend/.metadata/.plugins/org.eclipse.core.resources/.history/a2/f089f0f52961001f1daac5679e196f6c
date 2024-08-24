@@ -1,0 +1,10 @@
+package com.blogPlatform_backend.blog_backend.Controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/blogdataApi")
+public class BlogDataController {
+
+}

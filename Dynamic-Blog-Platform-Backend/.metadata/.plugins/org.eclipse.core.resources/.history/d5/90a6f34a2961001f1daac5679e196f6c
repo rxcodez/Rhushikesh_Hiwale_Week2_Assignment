@@ -1,0 +1,5 @@
+package com.blogPlatform_backend.blog_backend.Service;
+
+public class BlogDataService {
+
+}

@@ -1,0 +1,24 @@
+package com.blogPlatform_backend.blog_backend.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.blogPlatform_backend.blog_backend.Entity.BlogData;
+import com.blogPlatform_backend.blog_backend.Repository.BlogDataRepository;
+
+@Service
+public class BlogDataService {
+	@Autowired
+	BlogDataRepository BlogDataRepository;
+	public String SaveData(BlogData bd) {
+		String msg = BlogDataRepository.SaveData(bd);
+		if (msg==null) {
+			System.out.println("Failed to save the data");
+		}
+		return msg;
+	}
+	public String UpdateData(BlogData bd, int id) {
+		String msg = BlogDataRepository.UpdateData(bd, id);
+		return msg;
+	}
+}

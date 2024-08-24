@@ -1,0 +1,28 @@
+package com.blogPlatform_backend.blog_backend.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.blogPlatform_backend.blog_backend.Entity.BlogData;
+import com.blogPlatform_backend.blog_backend.Service.BlogDataService;
+
+@RestController
+@RequestMapping("/blogdataApi")
+public class BlogDataController {
+	@Autowired
+	BlogDataService BlogDataService; 
+	
+	@PostMapping("/savedata")
+	public String SaveData(@RequestBody BlogData bd) {
+		String msg = BlogDataService.SaveData(bd);
+		return msg;
+	}
+	
+	public String UpdateData(BlogData bd, int id) {
+		String msg = BlogDataService.UpdateData(bd, id);
+		return msg;
+	}
+}

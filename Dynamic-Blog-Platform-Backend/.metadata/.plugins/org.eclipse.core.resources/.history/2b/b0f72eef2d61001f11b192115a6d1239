@@ -1,0 +1,36 @@
+package com.blogPlatform_backend.blog_backend.Repository;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.blogPlatform_backend.blog_backend.Entity.BlogData;
+
+@Repository
+public class BlogDataRepository {
+	@Autowired
+	SessionFactory factory;
+	public String SaveData(BlogData bd) {
+		Session session = null;
+		Transaction tx = null;
+		String msg = null;
+		try {
+			session = factory.openSession();
+			tx = session.beginTransaction();
+			session.persist(bd);
+			tx.commit();
+			msg = "Data saved successfully";
+		} catch (Exception e) {
+			if (tx!=null) {
+				tx.rollback();
+			}
+		}finally {
+			if (session!=null) {
+				session.close();
+			}
+		}
+		return msg;
+	}
+}
